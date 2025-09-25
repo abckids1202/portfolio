@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Portfolio{% endblock %}
+
+{% block content %}
+<div class="intro">
+    <div class="profile-card">
+        <div class="profile-img">
+            <img src="https://via.placeholder.com/150" alt="Profile Picture">
+        </div>
+        <div class="profile-info">
+            <h1>{{ about.name }}</h1>
+            <p class="bio">{{ about.bio }}</p>
+            <div class="details">
+                <p><strong>Status:</strong> {{ about.status }}</p>
+                <p><strong>Email:</strong> {{ about.email }}</p>
+            </div>
+            <div class="interests">
+                <h2>My Interests</h2>
+                <div class="interest-tags">
+                    {% for interest in about.interests %}
+                        <span class="tag">{{ interest }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
