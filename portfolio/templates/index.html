@@ -3,12 +3,6 @@
 {% block content %}
 <section class="hero" aria-labelledby="hero-title">
   <div class="world-meta"><span class="world-label">OVERWORLD / CHERRY GROVE</span><span>MY PORTFOLIO <span class="meta-star">✦</span></span></div>
-  <div class="biome-switcher" data-biome-switcher aria-label="Choose a world biome">
-    <div class="biome-switcher-top"><span>WORLD SELECT</span><output class="biome-count" aria-live="polite">01 / 05</output></div>
-    <div class="biome-current"><span class="biome-orb" aria-hidden="true"></span><div><strong class="biome-name">Overworld</strong><small class="biome-description">Cherry grove</small></div></div>
-    <div class="biome-controls"><button type="button" class="biome-arrow" data-biome-prev aria-label="Previous biome">←</button><div class="biome-dots" role="tablist" aria-label="Biomes"><button type="button" role="tab" data-biome-dot="0" aria-label="Overworld: cherry grove" aria-selected="true"></button><button type="button" role="tab" data-biome-dot="1" aria-label="Nether: crimson citadel" aria-selected="false"></button><button type="button" role="tab" data-biome-dot="2" aria-label="End: astral islands" aria-selected="false"></button><button type="button" role="tab" data-biome-dot="3" aria-label="Frozen peaks: aurora lake" aria-selected="false"></button><button type="button" role="tab" data-biome-dot="4" aria-label="Lush cave: crystal falls" aria-selected="false"></button></div><button type="button" class="biome-arrow" data-biome-next aria-label="Next biome">→</button></div>
-    <p class="biome-hint">Use ← → or swipe</p>
-  </div>
   <div class="hero-copy">
     <div class="eyebrow"><span class="tiny-cross">+</span> PLAYER ONE HAS JOINED</div>
     <h1 id="hero-title">{{ about.name }}</h1>
@@ -22,6 +16,7 @@
     <a class="pixel-button primary" href="#journey">Explore my journey <span>↗</span></a>
   </div>
   <div class="character-label" aria-hidden="true"><span>Arsene Matthew</span><small>PILAR HIGH SCHOOL STUDENT</small></div>
+  <img class="avatar-overlay" src="{{ url_for('static', filename='images/avatar-overlay.png') }}" alt="">
   <a class="scroll-cue" href="#journey"><span>↓</span> SCROLL TO EXPLORE</a>
   <div class="scene-note" aria-hidden="true">BIOME <span class="scene-biome">Cherry grove</span><br>MODE <span>Always learning</span></div>
 </section>
