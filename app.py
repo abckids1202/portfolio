@@ -4,8 +4,9 @@ app = Flask(__name__)
 
 about_me = {
     "name": "Arsene Matthew. E. N",
-    "bio": "Hello! I'm Matthew.",
-    "interests": ["Programming", "Chess", "Philosophy", "Thinking"],
+    "bio": "'It'd my pleasure to introduce myself. The name's Matthew.'",
+    "interests": ["Programming", "Philosopy", "Literature"
+                  ],
     "status": "Pilar High School Student",
     "email": "matthew.arsene.en@gmail.com"
 }

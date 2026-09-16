@@ -3,101 +3,238 @@
 {% block title %}Grade 10 - Term 1{% endblock %}
 
 {% block content %}
-<div class="term-page">
-    <div class="term-header">
-        <h1>Grade 10, Term 1</h1>
-        <div class="term-nav">
-            <a href="/" class="nav-btn">Home</a>
+<div class="slideshow-container">
+    <div class="slide active">
+        <div class="slide-content">
+            <div class="title-slide">
+                <h1>Grade 10, Term 1</h1>
+                <h2>My Projects and Reflections</h2>
+            </div>
         </div>
     </div>
-    
-    <div class="term-content">
-        <div class="project-card">
-            <div class="project-header">
-                <h2>Chemistry Presentation</h2>
-                <div class="project-meta">
-                    <span class="project-subject">Chemistry</span>
-                    <span class="project-date">Term 1</span>
-                </div>
-            </div>
-            <div class="project-content">
-                <p>Documentation for my chemistry presentation project will be added here.</p>
-                
-                <div class="project-images">
-                    <img src="https://via.placeholder.com/400x250" alt="Chemistry Project Image 1">
-                    <img src="https://via.placeholder.com/400x250" alt="Chemistry Project Image 2">
-                </div>
-                
-                <div class="project-details">
-                    <h3>Atom Presentation</h3>
-                    <p>This section will include details about the chemistry presentation topic, research methods, and key findings.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="project-card">
-            <div class="project-header">
-                <h2>Geography Map</h2>
-                <div class="project-meta">
-                    <span class="project-subject">Geography</span>
-                    <span class="project-date">Term 1</span>
-                </div>
-            </div>
-            <div class="project-content">
-                <p>Documentation for my geography map project will be added here.</p>
 
-                <div class="project-images">
-                    <img src="https://via.placeholder.com/400x250" alt="Geography Project Image 1">
-                    <img src="https://via.placeholder.com/400x250" alt="Geography Project Image 2">
-                </div>
-                
-                <div class="project-details">
-                    <h3>Making a Map and Analyzing its Geographical Features and Location</h3>
-                    <p>This section will include details about the geography map project, including the region studied, mapping techniques, and key geographical features.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="project-card">
-            <div class="project-header">
-                <h2>Calculator Project</h2>
-                <div class="project-meta">
-                    <span class="project-subject">Mathematics</span>
-                    <span class="project-date">Term 1</span>
-                </div>
-            </div>
-            <div class="project-content">
-                <p>Documentation for my calculator project will be added here.</p>
-                
-                <div class="project-images">
-                    <img src="https://via.placeholder.com/400x250" alt="Calculator Project Image 1">
-                    <img src="https://via.placeholder.com/400x250" alt="Calculator Project Image 2">
-                </div>
-                
-                <div class="project-details">
-                    <h3>Making an .exe Software Calculator</h3>
-                    <p>This section will include details about the calculator project, including the mathematical concepts implemented, programming approach, and features.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="reflection-card">
-            <div class="reflection-header">
-                <h2>Self Reflection</h2>
-            </div>
-            <div class="reflection-content">
-                <div class="reflection-images">
-                    <div class="reflection-image">
-                        <img src="https://via.placeholder.com/400x300" alt="Self Reflection 1">
-                        <p class="image-caption">Activity 1</p>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>Chemistry Presentation</h2>
+                    <div class="project-meta">
+                        <span class="project-subject">Chemistry</span>
+                        <span class="project-date">Term 1</span>
                     </div>
-                    <div class="reflection-image">
-                        <img src="https://via.placeholder.com/400x300" alt="Self Reflection 2">
-                        <p class="image-caption">Activity 2</p>
+                </div>
+                <div class="project-content">
+                    <div class="project-images">
+                        <div class="image-container">
+                            <h4 class="image-title">Our Presentation</h4>
+                            <img src="{{ url_for('static', filename='css/images/chemistry1.jpeg') }}" alt="Our Presentation">
+                        </div>
+                        <div class="image-container">
+                            <h4 class="image-title">Making a revision after presentation</h4>
+                            <img src="{{ url_for('static', filename='css/images/chemistry2.jpeg') }}" alt="Making a revision after presentation" class="smaller-image">
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <h3>Atom Presentation</h3>
+                        <div class="structured-content">
+                            <div class="content-section">
+                                <div class="section-title">What:</div>
+                                <div class="section-content">Our topic in chemistry is atom. We studied about atom theories, electron configuration, and the periodic system. We were then assigned a group project with a topic. My group was assigned the Bohr Atom Theory.</div>
+                            </div>
+                            
+                            <div class="content-section">
+                                <div class="section-title">Why:</div>
+                                <div class="section-content">The goal was to understand different atomic theories and learn from each group's presentation.</div>
+                            </div>
+                            
+                            <div class="content-section">
+                                <div class="section-title">How:</div>
+                                <div class="section-content">Each group made a presentation and an atom model. One member presented at a post while others visited other posts. After it's done, we discussed and summarized all the theories together.</div>
+                            </div>
+                            
+                            <div class="content-section">
+                                <div class="section-title">Conclusion:</div>
+                                <div class="section-content">This activity helped us understand better about all the atomic theories from every group.</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>Geography Map</h2>
+                    <div class="project-meta">
+                        <span class="project-subject">Geography</span>
+                        <span class="project-date">Term 1</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-images">
+                        <div class="image-container">
+                            <h4 class="image-title">Map</h4>
+                            <img src="{{ url_for('static', filename='css/images/geography1.jpeg') }}" alt="Map" class="smaller-image">
+                        </div>
+                        <div class="image-container">
+                            <h4 class="image-title">Map and Analysis</h4>
+                            <img src="{{ url_for('static', filename='css/images/geography2.jpeg') }}" alt="Map and Analysis" class="smaller-image">
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <h3>Making a Map and Analyzing its Geographical Features and Location</h3>
+                        <div class="structured-content">
+                            <div class="content-section">
+                                <div class="section-title">What:</div>
+                                <div class="section-content">This term we studied about geography's principles, concepts, approaches, locations, and aspects. Our project was to analyze the geographical aspects of a map.</div>
+                            </div>
+                            
+                            <div class="content-section">
+                                <div class="section-title">Why:</div>
+                                <div class="section-content">The purpose was to apply what we learned in class to a real example and understand geography better.</div>
+                            </div>
+                            
+                            <div class="content-section">
+                                <div class="section-title">How:</div>
+                                <div class="section-content">We worked in pairs, analyzing the map, and highlighted the geographical aspects based on what we learned.</div>
+                            </div>
+                            
+                            <div class="content-section">
+                                <div class="section-title">Conclusion:</div>
+                                <div class="section-content">In my opinion, this project made us analyze real life geographical concepts and aspects better.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>Calculator Project</h2>
+                    <div class="project-meta">
+                        <span class="project-subject">Mathematics</span>
+                        <span class="project-date">Term 1</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-images">
+                        <div class="image-container">
+                            <h4 class="image-title">Calculator</h4>
+                            <img src="{{ url_for('static', filename='css/images/calculator1.jpeg') }}" alt="Calculator">
+                        </div>
+                        <div class="image-container">
+                            <h4 class="image-title">Code</h4>
+                            <img src="{{ url_for('static', filename='css/images/calculator2.jpeg') }}" alt="Code" class="smaller-image">
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <h3>Making an .exe Software Calculator</h3>
+                        <div class="structured-content">
+                            <div class="content-section">
+                                <div class="section-title">What:</div>
+                                <div class="section-content">We learned about logarithms and exponents in math. The project was to create not only a normal calculator app but also a scientific one that uses these topics.</div>
+                            </div>
+                            
+                            <div class="content-section">
+                                <div class="section-title">Why:</div>
+                                <div class="section-content">The goal was to understand the concepts better and apply those concepts into a useful software product.</div>
+                            </div>
+                            
+                            <div class="content-section">
+                                <div class="section-title">How:</div>
+                                <div class="section-content">I first planned to make a mobile app using react native, but due to technical issues, i switched to Python and built an .exe calculator that also includes trigonometry, exponents, and logarithms.</div>
+                            </div>
+                            
+                            <div class="content-section">
+                                <div class="section-title">Conclusion:</div>
+                                <div class="section-content">For me, this project helped combine my programming skills with my math logic to make a calculator application.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <div class="reflection-card">
+                <div class="reflection-header">
+                    <h2>Self Reflection</h2>
+                </div>
+                <div class="reflection-content">
+                    <div class="reflection-images">
+                        <div class="reflection-image">
+                            <p class="image-caption smaller-title">My goals and progression</p>
+                            <img src="{{ url_for('static', filename='css/images/selfreflection1.jpeg') }}" alt="Goals and Progression">
+                            <div class="image-description">
+                                <div class="structured-content">
+                                    <div class="content-section">
+                                        <div class="section-title">What:</div>
+                                        <div class="section-content">My goal is to keep moving forward, grow, and always strive to surpass myself.</div>
+                                    </div>
+                                    
+                                    <div class="content-section">
+                                        <div class="section-title">Why:</div>
+                                        <div class="section-content">I believe embracing new perspectives and learning from mistakes helps me become better.</div>
+                                    </div>
+                                    
+                                    <div class="content-section">
+                                        <div class="section-title">How:</div>
+                                        <div class="section-content">I train and practice skills like programming and other abilities while learning from setbacks.</div>
+                                    </div>
+                                    
+                                    <div class="content-section">
+                                        <div class="section-title">Goal:</div>
+                                        <div class="section-content">For the future, I need to stay more focused and consistent in everything I do.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reflection-image">
+                            <p class="image-caption smaller-title">Self evaluation of this term</p>
+                            <img src="{{ url_for('static', filename='css/images/selfreflection2.jpeg') }}" alt="Self Evaluation">
+                            <div class="image-description">
+                                <div class="structured-content">
+                                    <div class="content-section">
+                                        <div class="section-title">What:</div>
+                                        <div class="section-content">This term, I worked on changing my bad habits.</div>
+                                    </div>
+                                    
+                                    <div class="content-section">
+                                        <div class="section-title">Why:</div>
+                                        <div class="section-content">I want to continue embracing life and try to be better.</div>
+                                    </div>
+                                    
+                                    <div class="content-section">
+                                        <div class="section-title">How:</div>
+                                        <div class="section-content">I started practicing better routines and paying attention to my actions.</div>
+                                    </div>
+                                    
+                                    <div class="content-section">
+                                        <div class="section-title">Goal:</div>
+                                        <div class="section-content">Next term, I will try to stay calm and be more consistent in everything I do.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+
 {% endblock %}

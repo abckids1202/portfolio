@@ -3,27 +3,434 @@
 {% block title %}Grade 10 - Term 3{% endblock %}
 
 {% block content %}
-<div class="term-page">
-    <div class="term-header">
-        <h1>Grade 10, Term 3</h1>
-        <div class="term-nav">
-            <a href="/" class="nav-btn">Home</a>
+<div class="slideshow-container">
+    
+    <!-- SLIDE 1: MAIN TITLE -->
+    <div class="slide active">
+        <div class="slide-content">
+            <div class="title-slide">
+                <!-- Decorations -->
+                <div class="decoration-left" style="background: var(--accent-blue);"></div>
+                <div class="decoration-right" style="background: var(--accent-pink);"></div>
+                
+                <h1>Grade 10<br>Term 3</h1>
+                <h2>Projects & Reflection</h2>
+            </div>
         </div>
     </div>
-    
-    <div class="term-content">
-        <div class="standard-term">
-            <div class="content-card">
-                <h2>Term Content</h2>
-                <p>Grade 10 Term 3</p>
+
+    <!-- =========================================
+         PHYSICS
+         ========================================= -->
+
+    <!-- SLIDE 2: PHYSICS INTRO -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="intro-title-slide">
+                <div class="blob-decoration" style="background: var(--accent-blue);"></div>
+                <span class="subject-badge">Physics</span>
+                <h1>Rotary System</h1>
                 
-                <div class="term-details">
-                    <h3>Details</h3>
-                    <p>-</p>
-                    
+                <div class="intro-image-row">
+                    <div class="intro-img-box">
+                        <img src="{{ url_for('static', filename='css/images/physics1.jpeg') }}" alt="Circular Motion">
+                    </div>
+                    <div class="intro-img-box">
+                        <img src="{{ url_for('static', filename='css/images/physics2.jpeg') }}" alt="System">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- SLIDE 3: PHYSICS - WHAT -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="blob-decoration" style="background: var(--accent-blue);"></div>
+            <div class="full-list-slide">
+                <h2 class="list-title">Physics: What?</h2>
+                <div class="list-content">
+                    <div class="list-item">
+                        <span class="bullet-icon">?</span>
+                        <p>We learned about circular motion, describing an object moving along a circle's circumference at constant speed.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">?</span>
+                        <p>We analyzed the difference between uniform circular motion and rotational kinematics.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">?</span>
+                        <p>Our objective was to create a physical rotary mechanism and count the rotational kinematics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: PHYSICS - WHY -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="blob-decoration" style="background: var(--accent-pink);"></div>
+            <div class="full-list-slide">
+                <h2 class="list-title">Physics: Why?</h2>
+                <div class="list-content">
+                    <div class="list-item">
+                        <span class="bullet-icon">!</span>
+                        <p>To bridge theoretical knowledge with practical application.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">!</span>
+                        <p>To understand how variables like radius and time affect the system's dynamics.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">!</span>
+                        <p>To practice calculating real-world measurements and analyzing data accuracy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW SLIDE: PHYSICS - FORMULAS -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="blob-decoration" style="background: var(--accent-purple);"></div>
+            <div class="formula-slide-wrapper">
+                <h2 class="list-title" style="font-size: 2.5rem;">Rotational Formulas</h2>
+                <div class="formula-card">
+                    <table class="formula-table">
+                        <thead>
+                            <tr>
+                                <th>Variable</th>
+                                <th>Formula</th>
+                                <th>Unit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Period (T)</td>
+                                <td>t / n</td>
+                                <td>Seconds (s)</td>
+                            </tr>
+                            <tr>
+                                <td>Frequency (f)</td>
+                                <td>n / t or 1 / T</td>
+                                <td>Hertz (Hz)</td>
+                            </tr>
+                            <tr>
+                                <td>Angular Velocity (&omega;)</td>
+                                <td>2&pi;f</td>
+                                <td>rad/s</td>
+                            </tr>
+                            <tr>
+                                <td>Linear Speed (v)</td>
+                                <td>&omega;r</td>
+                                <td>m/s</td>
+                            </tr>
+                            <tr>
+                                <td>Centripetal Acc (a<sub>c</sub>)</td>
+                                <td>v<sup>2</sup> / r</td>
+                                <td>m/s<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td>Centripetal Force (F<sub>c</sub>)</td>
+                                <td>m v<sup>2</sup> / r</td>
+                                <td>Newton (N)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: PHYSICS - HOW -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="blob-decoration" style="background: var(--accent-blue);"></div>
+            <div class="full-list-slide">
+                <h2 class="list-title">Physics: How?</h2>
+                <div class="list-content">
+                    <div class="list-item">
+                        <span class="bullet-icon">➜</span>
+                        <p>Constructed a rotary system using a dynamo, cardboard, and an electric circuit.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">➜</span>
+                        <p>Used a stopwatch to measure the time for 10 full rotations to calculate Period (T).</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">➜</span>
+                        <p>Derived Frequency, Angular Velocity, and Centripetal Force using the collected data.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">➜</span>
+                        <p>Concluded by analyzing the relationship between radius and force required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================
+         BIOLOGY
+         ========================================= -->
+
+    <!-- SLIDE 6: BIOLOGY INTRO -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="intro-title-slide">
+                <div class="blob-decoration" style="background: var(--accent-green);"></div>
+                <span class="subject-badge">Biology</span>
+                <h1>Biological Map Analysis</h1>
+                
+                <div class="intro-image-row">
+                    <div class="intro-img-box">
+                        <img src="{{ url_for('static', filename='css/images/biology1.jpeg') }}" alt="Map">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: BIOLOGY - WHAT -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="blob-decoration" style="background: var(--accent-green);"></div>
+            <div class="full-list-slide">
+                <h2 class="list-title">Biology: What?</h2>
+                <div class="list-content">
+                    <div class="list-item">
+                        <span class="bullet-icon">?</span>
+                        <p>We studied Ecology, focusing on biomes and the distribution of living organisms.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">?</span>
+                        <p>Conducted an interlinked project with Geography to analyze Biogeography.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">?</span>
+                        <p>Analyzed specific maps to identify the correlation between land features and species.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: BIOLOGY - WHY -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="blob-decoration" style="background: var(--accent-yellow);"></div>
+            <div class="full-list-slide">
+                <h2 class="list-title">Biology: Why?</h2>
+                <div class="list-content">
+                    <div class="list-item">
+                        <span class="bullet-icon">!</span>
+                        <p>To apply critical thinking to real-world environmental problems.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">!</span>
+                        <p>To understand how topography, climate, and water sources influence biodiversity.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">!</span>
+                        <p>To visualize the complex interactions between the physical earth and biological life.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 9: BIOLOGY - HOW -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="blob-decoration" style="background: var(--accent-blue);"></div>
+            <div class="full-list-slide">
+                <h2 class="list-title">Biology: How?</h2>
+                <div class="list-content">
+                    <div class="list-item">
+                        <span class="bullet-icon">➜</span>
+                        <p>Collaborated in groups to select a specific region for map analysis.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">➜</span>
+                        <p>Identified geographical elements like elevation, soil type, and vegetation.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">➜</span>
+                        <p>Used the 5W 1H method to deeply analyze the distribution of flora and fauna.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">➜</span>
+                        <p>Created a visual display presenting our findings to the class.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================
+         HISTORY
+         ========================================= -->
+
+    <!-- SLIDE 10: HISTORY INTRO -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="intro-title-slide">
+                <div class="blob-decoration" style="background: var(--accent-yellow);"></div>
+                <span class="subject-badge">History</span>
+                <h1>Hindu-Buddha Poster</h1>
+                
+                <div class="intro-image-row">
+                    <div class="intro-img-box">
+                        <img src="{{ url_for('static', filename='css/images/history1.png') }}" alt="Poster">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 11: HISTORY - WHAT -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="blob-decoration" style="background: var(--accent-yellow);"></div>
+            <div class="full-list-slide">
+                <h2 class="list-title">History: What?</h2>
+                <div class="list-content">
+                    <div class="list-item">
+                        <span class="bullet-icon">?</span>
+                        <p>Studied theories of Indonesian origin, including the "Out of Taiwan" theory.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">?</span>
+                        <p>Explored the rise and fall of the Hindu-Buddhist kingdoms in the archipelago.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">?</span>
+                        <p>Created a detailed poster summarizing a specific kingdom like Majapahit or Srivijaya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 12: HISTORY - WHY -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="blob-decoration" style="background: var(--accent-pink);"></div>
+            <div class="full-list-slide">
+                <h2 class="list-title">History: Why?</h2>
+                <div class="list-content">
+                    <div class="list-item">
+                        <span class="bullet-icon">!</span>
+                        <p>To examine the profound cultural and religious impacts of ancient civilizations.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">!</span>
+                        <p>To understand how traditions assimilated into local Indonesian culture.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">!</span>
+                        <p>To appreciate the architectural heritage (Candi, Stupa) left behind.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 13: HISTORY - HOW -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="blob-decoration" style="background: var(--accent-purple);"></div>
+            <div class="full-list-slide">
+                <h2 class="list-title">History: How?</h2>
+                <div class="list-content">
+                    <div class="list-item">
+                        <span class="bullet-icon">➜</span>
+                        <p>Researched historical texts and ancient inscriptions (Prasasti).</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">➜</span>
+                        <p>Identified significant temple locations and their architectural styles.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">➜</span>
+                        <p>Collaborated to design a visual timeline of the kingdom's history.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet-icon">➜</span>
+                        <p>Illustrated the trade routes and spread of Buddhism and Hinduism.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 15: SELF REFLECTION (Adjusted index due to new slide) -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="reflection-card">
+                <div class="reflection-header">
+                    <h2>Self Reflection</h2>
+                </div>
+                <div class="reflection-content">
+                    <div class="reflection-images">
+                        <div class="reflection-image">
+                            <p class="image-caption">My goals and expectation</p>
+                            <img src="{{ url_for('static', filename='css/images/selfreflection3.jpeg') }}" alt="Goals" style="max-height: 180px; object-fit: contain; margin-bottom: 1rem;">
+                            <div class="image-description">
+                                <div class="structured-content">
+                                    <div class="content-section">
+                                        <div class="section-title">What:</div>
+                                        <div class="section-content">My goals are to live authentically and to continue my life and keep building my character.</div>
+                                    </div>
+                                    <div class="content-section">
+                                        <div class="section-title">Why:</div>
+                                        <div class="section-content">I believe embracing new perspectives and the endless search for meaning is my purpose.</div>
+                                    </div>
+                                    <div class="content-section">
+                                        <div class="section-title">How:</div>
+                                        <div class="section-content">Exercising and evaluating more in my journey.</div>
+                                    </div>
+                                    <div class="content-section">
+                                        <div class="section-title">Goal:</div>
+                                        <div class="section-content">My expectations for the future is to continue seeking knowledge and cultivating wisdom.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reflection-image">
+                            <p class="image-caption">Self evaluation of this term</p>
+                            <img src="{{ url_for('static', filename='css/images/selfreflection4.jpeg') }}" alt="Evaluation" style="max-height: 180px; object-fit: contain; margin-bottom: 1rem;">
+                            <div class="image-description">
+                                <div class="structured-content">
+                                    <div class="content-section">
+                                        <div class="section-title">What:</div>
+                                        <div class="section-content">This term, I tried to be in peace with myself.</div>
+                                    </div>
+                                    <div class="content-section">
+                                        <div class="section-title">Why:</div>
+                                        <div class="section-content">I want to continue embracing life and proceed with my journey.</div>
+                                    </div>
+                                    <div class="content-section">
+                                        <div class="section-title">How:</div>
+                                        <div class="section-content">I started meditating and controlling myself.</div>
+                                    </div>
+                                    <div class="content-section">
+                                        <div class="section-title">Goal:</div>
+                                        <div class="section-content">Next term, I will try to stay calm and be more consistent in everything I do.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
 </div>
+
+
 {% endblock %}

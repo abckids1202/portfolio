@@ -1,29 +1,34 @@
 {% extends "base.html" %}
-
-{% block title %}Home - My Portfolio{% endblock %}
-
+{% block title %}Home - Arsene Matthew{% endblock %}
 {% block content %}
-<div class="intro">
-    <div class="profile-card">
-        <div class="profile-img">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture">
-        </div>
-        <div class="profile-info">
-            <h1>{{ about.name }}</h1>
-            <p class="bio">{{ about.bio }}</p>
-            <div class="details">
-                <p><strong>Status:</strong> {{ about.status }}</p>
-                <p><strong>Email:</strong> {{ about.email }}</p>
-            </div>
-            <div class="interests">
-                <h2>My Interests</h2>
-                <div class="interest-tags">
-                    {% for interest in about.interests %}
-                        <span class="tag">{{ interest }}</span>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="world-meta"><span>OVERWORLD / CHERRY GROVE</span><span>MY PORTFOLIO <span class="meta-star">✦</span></span></div>
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="tiny-cross">+</span> PLAYER ONE HAS JOINED</div>
+    <h1 id="hero-title">{{ about.name }}</h1>
+    <div class="profile-panel">
+      <div class="panel-topline"><span>PLAYER PROFILE</span><span>01</span></div>
+      <p class="bio">{{ about.bio }}</p>
+      <div class="player-status"><span>CLASS</span><p>{{ about.status }}</p></div>
+      <div class="interests"><h2>My Interests</h2><div class="interest-tags">{% for interest in about.interests %}<span class="tag"><span>{{ ['⌘', '◇', '▤'][loop.index0] }}</span>{{ interest }}</span>{% endfor %}</div></div>
+      <a class="profile-email" href="mailto:{{ about.email }}">{{ about.email }} <span>↗</span></a>
     </div>
-</div>
+    <a class="pixel-button primary" href="#journey">Explore my journey <span>↗</span></a>
+  </div>
+  <div class="character-label" aria-hidden="true"><span>Arsene Matthew</span><small>PILAR HIGH SCHOOL STUDENT</small></div>
+  <a class="scroll-cue" href="#journey"><span>↓</span> SCROLL TO EXPLORE</a>
+  <div class="scene-note" aria-hidden="true">BIOME <span>Cherry grove</span><br>MODE <span>Always learning</span></div>
+</section>
+<section class="journey" id="journey" aria-labelledby="journey-title">
+  <div class="section-heading"><div><div class="eyebrow">THE QUEST JOURNAL</div><h2 id="journey-title">One term.<br><span>Another chapter.</span></h2></div><p>My Projects and Reflections <span>↓</span></p></div>
+  <div class="grade-grid">
+    {% for grade in [10, 11, 12] %}
+    <article class="grade-card" id="grade-{{ grade }}">
+      <div class="grade-card-top"><span>CHAPTER 0{{ loop.index }}</span><span>4 TERMS</span></div>
+      <div class="grade-title"><span class="grade-number">{{ grade }}</span><h3>Grade {{ grade }}</h3></div>
+      <div class="term-links">{% for term in [1, 2, 3, 4] %}<a href="/grade/{{ grade }}/term/{{ term }}"><span><small>0{{ term }}</small>Term {{ term }}</span><span>↗</span></a>{% endfor %}</div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}

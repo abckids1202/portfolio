@@ -1,49 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{% block title %}MyPortfolio{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#131c1a">
+  <meta name="description" content="Arsene Matthew's portfolio — school projects, interests, and reflections.">
+  <title>{% block title %}MyPortfolio{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/world.js') }}" defer></script>
+  <noscript><style>.slide{display:block;margin-bottom:40px}.nav-menu{display:flex!important}.mobile-menu-btn,.effects-toggle{display:none!important}</style></noscript>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="nav-brand">MyPortfolio</div>
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="/" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link">Grade 10 <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/grade/10/term/1">Term 1</a></li>
-                    <li><a href="/grade/10/term/2">Term 2</a></li>
-                    <li><a href="/grade/10/term/3">Term 3</a></li>
-                    <li><a href="/grade/10/term/4">Term 4</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link">Grade 11 <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/grade/11/term/1">Term 1</a></li>
-                    <li><a href="/grade/11/term/2">Term 2</a></li>
-                    <li><a href="/grade/11/term/3">Term 3</a></li>
-                    <li><a href="/grade/11/term/4">Term 4</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link">Grade 12 <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/grade/12/term/1">Term 1</a></li>
-                    <li><a href="/grade/12/term/2">Term 2</a></li>
-                    <li><a href="/grade/12/term/3">Term 3</a></li>
-                    <li><a href="/grade/12/term/4">Term 4</a></li>
-                </ul>
-            </li>
-        </ul>
+<body class="{{ 'home-page' if request.path == '/' else 'journal-page' }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="world-backdrop" aria-hidden="true"></div>
+  <div class="particles" aria-hidden="true"></div>
+  <header class="navbar">
+    <a class="nav-brand" href="/" aria-label="MyPortfolio home"><span class="brand-mark">M<span>•</span></span><span>MATTHEW<span class="brand-sub">PERSONAL WORLD / PORTFOLIO</span></span></a>
+    <button class="mobile-menu-btn pixel-button" aria-controls="navMenu" aria-expanded="false">Menu <span>+</span></button>
+    <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+      <a href="/" class="nav-link {{ 'selected' if request.path == '/' }}">Home</a>
+      {% for grade in [10, 11, 12] %}
+      <details class="nav-item dropdown">
+        <summary class="nav-link {{ 'selected' if '/grade/' ~ grade ~ '/' in request.path }}">Grade {{ grade }} <span class="chevron">⌄</span></summary>
+        <div class="dropdown-menu">{% for term in [1, 2, 3, 4] %}<a href="/grade/{{ grade }}/term/{{ term }}" {% if request.path == '/grade/' ~ grade ~ '/term/' ~ term %}aria-current="page"{% endif %}><span>0{{ term }}</span> Term {{ term }}</a>{% endfor %}</div>
+      </details>
+      {% endfor %}
     </nav>
-
-    <div class="content">
-        {% block content %}{% endblock %}
-    </div>
+    <button class="effects-toggle" aria-pressed="true" title="Toggle ambient motion"><span class="effects-light"></span> FX <span class="effects-state">ON</span></button>
+  </header>
+  <main class="content" id="main">
+    {% if request.path != '/' %}<div class="journal-breadcrumb"><a href="/#journey">← Back to world</a><span>QUEST JOURNAL / GRADE {{ request.path.split('/')[2] }} / TERM {{ request.path.split('/')[4] }}</span></div>{% endif %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer"><a href="/">MATTHEW'S WORLD</a><span>Projects. Reflections. Progress.</span><a href="mailto:matthew.arsene.en@gmail.com">Say hello ↗</a></footer>
+  <div class="inventory-wrap">
+    <div class="inventory-caption">{{ 'YOUR NEXT ADVENTURE' if request.path == '/' else 'EXPLORE THE JOURNAL' }}</div>
+    <nav class="inventory" aria-label="Quick navigation">
+      <a href="/" class="slot {{ 'equipped' if request.path == '/' }}" aria-label="Home"><span class="slot-number">1</span><span class="slot-symbol">⌂</span><span class="slot-label">Home</span></a>
+      {% for grade in [10, 11, 12] %}<a href="/#grade-{{ grade }}" class="slot {{ 'equipped' if '/grade/' ~ grade ~ '/' in request.path }}" aria-label="Grade {{ grade }}"><span class="slot-number">{{ loop.index + 1 }}</span><span class="slot-symbol">{{ grade }}</span><span class="slot-label">Grade {{ grade }}</span></a>{% endfor %}
+      <a href="mailto:matthew.arsene.en@gmail.com" class="slot" aria-label="Email Matthew"><span class="slot-number">5</span><span class="slot-symbol">✉</span><span class="slot-label">Contact</span></a>
+    </nav>
+    <div class="xp-track" aria-hidden="true"><span></span></div>
+  </div>
 </body>
 </html>
