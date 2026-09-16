@@ -41,6 +41,58 @@
       if (menu.classList.contains('active')) { menu.classList.remove('active'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.focus(); }
     }
   });
+  const biomeSwitcher = document.querySelector('[data-biome-switcher]');
+  if (biomeSwitcher) {
+    const biomes = [
+      { key: 'overworld', name: 'Overworld', description: 'Cherry grove', image: '/static/images/cherry-world.png' },
+      { key: 'nether', name: 'Nether', description: 'Crimson citadel', image: '/static/images/biome-nether.png' },
+      { key: 'end', name: 'The End', description: 'Astral islands', image: '/static/images/biome-end.png' },
+      { key: 'ice', name: 'Frozen peaks', description: 'Aurora lake', image: '/static/images/biome-ice.png' },
+      { key: 'lush', name: 'Lush cave', description: 'Crystal falls', image: '/static/images/biome-lush.png' }
+    ];
+    const hero = document.querySelector('.hero');
+    const backdrop = document.querySelector('.world-backdrop');
+    const worldLabel = document.querySelector('.world-label');
+    const sceneBiome = document.querySelector('.scene-biome');
+    const name = biomeSwitcher.querySelector('.biome-name');
+    const description = biomeSwitcher.querySelector('.biome-description');
+    const count = biomeSwitcher.querySelector('.biome-count');
+    const dots = [...biomeSwitcher.querySelectorAll('[data-biome-dot]')];
+    let biomeIndex = 0;
+    let pointerStart = null;
+    function showBiome(next) {
+      biomeIndex = (next + biomes.length) % biomes.length;
+      const biome = biomes[biomeIndex];
+      document.body.dataset.biome = biome.key;
+      document.body.style.setProperty('--biome-image', `url("${biome.image}")`);
+      name.textContent = biome.name;
+      description.textContent = biome.description;
+      count.textContent = `${String(biomeIndex + 1).padStart(2, '0')} / ${String(biomes.length).padStart(2, '0')}`;
+      worldLabel.textContent = `${biome.name.toUpperCase()} / ${biome.description.toUpperCase()}`;
+      sceneBiome.textContent = biome.description;
+      dots.forEach((dot, index) => {
+        dot.setAttribute('aria-selected', String(index === biomeIndex));
+        dot.classList.toggle('active', index === biomeIndex);
+      });
+      backdrop.classList.remove('biome-changing');
+      requestAnimationFrame(() => backdrop.classList.add('biome-changing'));
+    }
+    biomeSwitcher.querySelector('[data-biome-prev]').addEventListener('click', () => showBiome(biomeIndex - 1));
+    biomeSwitcher.querySelector('[data-biome-next]').addEventListener('click', () => showBiome(biomeIndex + 1));
+    dots.forEach(dot => dot.addEventListener('click', () => showBiome(Number(dot.dataset.biomeDot))));
+    biomeSwitcher.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); showBiome(biomeIndex - 1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); showBiome(biomeIndex + 1); }
+    });
+    hero.addEventListener('pointerdown', event => { pointerStart = event.clientX; });
+    hero.addEventListener('pointerup', event => {
+      if (pointerStart === null) return;
+      const distance = event.clientX - pointerStart;
+      if (Math.abs(distance) > 55) showBiome(biomeIndex + (distance < 0 ? 1 : -1));
+      pointerStart = null;
+    });
+    showBiome(0);
+  }
   const slideshow = document.querySelector('.slideshow-container');
   if (!slideshow) return;
   const slides = [...slideshow.querySelectorAll('.slide')];
