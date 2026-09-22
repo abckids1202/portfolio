@@ -2,90 +2,59 @@
 
 {% block title %}Grade 11 - Term 1{% endblock %}
 
+{% macro page(subject, title, label, text, visual, image=false) %}
+<div class="slide">
+  <div class="slide-content">
+    <article class="project-card subject-slide">
+      <header class="project-header">
+        <h2>{{ title }}</h2>
+        <div class="project-meta"><span class="project-subject">{{ subject }}</span><span class="project-date">{{ label }}</span></div>
+      </header>
+      <div class="project-content presentation-content">
+        <div class="presentation-visual{% if image %} presentation-image{% endif %}">
+          {% if image %}
+          <img src="{{ url_for('static', filename='images/grade11-batik-motif.png') }}" alt="Symmetrical batik motif in green, gold, and rust, created with geometric shapes and repeated transformations">
+          <span class="image-caption">My GeoGebra batik motif</span>
+          {% else %}
+          <span class="visual-label">{{ label }}</span>
+          <strong>{{ visual }}</strong>
+          {% endif %}
+        </div>
+        <div class="presentation-copy"><p>{{ text }}</p></div>
+      </div>
+    </article>
+  </div>
+</div>
+{% endmacro %}
+
 {% block content %}
 <div class="slideshow-container">
-    <div class="slide active">
-        <div class="slide-content">
-            <div class="title-slide">
-                <h1>Grade 11, Term 1</h1>
-                <h2>My Projects and Reflections</h2>
-            </div>
-        </div>
+  <div class="slide active">
+    <div class="slide-content">
+      <div class="title-slide">
+        <p class="subject-badge">QUEST JOURNAL / 01</p>
+        <h1>Grade 11, Term 1</h1>
+        <h2>Projects, ideas, and what I learned</h2>
+        <p class="term-intro">Use the arrows to explore Mathematics, Physics, and Advanced Mathematics. Each subject is presented one idea at a time.</p>
+      </div>
     </div>
+  </div>
 
-    <div class="slide">
-        <div class="slide-content">
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>Mathematics Motif Batik</h2>
-                    <div class="project-meta"><span class="project-subject">Mathematics</span><span class="project-date">Term 1</span></div>
-                </div>
-                <div class="project-content">
-                    <div class="project-images">
-                        <div class="image-placeholder"><span>IMAGE PLACEHOLDER</span><strong>GeoGebra batik motif</strong><small>Add your motif screenshot here later</small></div>
-                    </div>
-                    <div class="project-details">
-                        <h3>Creating a Batik Motif with Transformations</h3>
-                        <div class="structured-content">
-                            <div class="content-section"><div class="section-title">What:</div><div class="section-content">I created a batik motif in GeoGebra using reflections, rotations, functions, and other mathematical transformations.</div></div>
-                            <div class="content-section"><div class="section-title">Why:</div><div class="section-content">The project helped me understand how mathematical rules can create symmetry and connect geometry with Indonesian batik design.</div></div>
-                            <div class="content-section"><div class="section-title">How:</div><div class="section-content">I started with a basic motif, reflected and rotated it across the coordinate plane, then adjusted functions and coordinates to build a repeated pattern.</div></div>
-                            <div class="content-section"><div class="section-title">Conclusion:</div><div class="section-content">Designing the motif made transformations more visual and helped me see how equations can become part of a creative composition.</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  {{ page('Mathematics', 'Batik Motif in GeoGebra', 'WHAT', 'I designed this batik-inspired motif in GeoGebra. Its repeating shapes are built from geometric forms arranged around a central point.', 'My motif', true) }}
+  {{ page('Mathematics', 'Why I Made It', 'WHY', 'I wanted to explore how mathematics can create balance, repetition, and symmetry, while connecting the patterns I studied to Indonesian batik design.', 'Pattern & symmetry') }}
+  {{ page('Mathematics', 'Building the Motif', 'HOW', 'I began with a central shape, then used reflections and rotations to repeat it around the design. I adjusted lines, curves, and functions until the pieces formed a balanced pattern.', 'Transformations') }}
+  {{ page('Mathematics', 'What I Learned', 'REFLECTION', 'The activity helped me see transformations as more than rules on a coordinate plane. Small changes to a shape or its position can change the rhythm of the whole design.', 'Math becomes design') }}
 
-    <div class="slide">
-        <div class="slide-content">
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>Explaining Circular Motion in a Video</h2>
-                    <div class="project-meta"><span class="project-subject">Physics</span><span class="project-date">Term 1</span></div>
-                </div>
-                <div class="project-content">
-                    <div class="project-images">
-                        <div class="image-placeholder"><span>IMAGE PLACEHOLDER</span><strong>Circular motion video</strong><small>Add a video thumbnail or production photo here later</small></div>
-                    </div>
-                    <div class="project-details">
-                        <h3>Making Physics Understandable Through Video</h3>
-                        <div class="structured-content">
-                            <div class="content-section"><div class="section-title">What:</div><div class="section-content">My group made a video explaining circular motion and how an object moves around a fixed centre or axis.</div></div>
-                            <div class="content-section"><div class="section-title">Why:</div><div class="section-content">The goal was to explain circular motion clearly and connect concepts such as speed, radius, and direction to examples from everyday life.</div></div>
-                            <div class="content-section"><div class="section-title">How:</div><div class="section-content">We planned the explanation, divided the topic into sections, recorded examples of rotation, and edited the footage into one instructional video.</div></div>
-                            <div class="content-section"><div class="section-title">Conclusion:</div><div class="section-content">Creating the video helped me understand the topic well enough to explain circular motion using simple visuals and clear examples.</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  {{ page('Physics', 'Circular Motion', 'WHAT', 'Circular motion happens when an object travels along a circular path around a centre or axis. Even at constant speed, its direction changes continuously.', 'A path around a centre') }}
+  {{ page('Physics', 'Why Explain It in a Video?', 'WHY', 'A video can combine narration, demonstrations, and diagrams. That makes it easier to show the changing direction of motion and connect the physics to familiar examples.', 'Explain it visually') }}
+  {{ page('Physics', 'Planning the Explanation', 'HOW', 'We planned the main points, divided the explanation into sections, and used examples of rotation to show the motion. We then recorded and edited the clips into one video.', 'Plan · record · edit') }}
+  {{ page('Physics', 'What I Learned', 'REFLECTION', 'Preparing to explain circular motion encouraged me to organize the ideas clearly and think about what a viewer needs to see in order to understand the movement.', 'Learning by explaining') }}
 
-    <div class="slide">
-        <div class="slide-content">
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>Advanced Mathematics</h2>
-                    <div class="project-meta"><span class="project-subject">Advanced Mathematics</span><span class="project-date">Term 1</span></div>
-                </div>
-                <div class="project-content">
-                    <div class="project-images">
-                        <div class="image-placeholder"><span>IMAGE PLACEHOLDER</span><strong>Test score screenshot</strong><small>Add your test screenshot here later</small></div>
-                    </div>
-                    <div class="project-details">
-                        <h3>Trigonometric Equations</h3>
-                        <div class="structured-content">
-                            <div class="content-section"><div class="section-title">What:</div><div class="section-content">In Advanced Mathematics, I learned about trigonometric equations, including how to solve equations involving sine, cosine, and tangent.</div></div>
-                            <div class="content-section"><div class="section-title">Why:</div><div class="section-content">The topic helped me understand relationships between angles and ratios, and how the same equation can have multiple solutions within a given interval.</div></div>
-                            <div class="content-section"><div class="section-title">How:</div><div class="section-content">I practiced simplifying equations, applying trigonometric identities, finding general solutions, and checking which answers matched the required domain.</div></div>
-                            <div class="content-section"><div class="section-title">Progress:</div><div class="section-content">There was no separate project for this subject, so I am including a screenshot of my test score as evidence of my progress this term.</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  {{ page('Advanced Mathematics', 'Trigonometry: The Big Idea', 'WHAT', 'This term we studied trigonometric identities, expressions, and equations. They use relationships between angles and sine, cosine, and tangent to rewrite and solve mathematical statements.', 'Angles & relationships') }}
+  {{ page('Advanced Mathematics', 'Trigonometric Identities', 'IDENTITIES', 'An identity is true for every angle where both sides are defined. For example, sin²θ + cos²θ = 1 and tanθ = sinθ ÷ cosθ. Identities help transform a complicated expression into an equivalent, simpler form.', 'Rewrite equivalent forms') }}
+  {{ page('Advanced Mathematics', 'Trigonometric Expressions', 'EXPRESSIONS', 'An expression combines numbers, variables, and trigonometric functions without an equals sign. We can simplify expressions by factoring, combining terms, or using identities while keeping the value equivalent.', 'Simplify carefully') }}
+  {{ page('Advanced Mathematics', 'Trigonometric Equations', 'EQUATIONS', 'An equation includes an equals sign and asks which angle values make it true. Solving often means isolating a trigonometric function, finding angles, and checking all solutions in the required interval or period.', 'Find every valid angle') }}
+  {{ page('Advanced Mathematics', 'How I Practise the Topic', 'METHOD', 'I identify whether I am working with an identity, expression, or equation. Then I choose a useful identity, simplify one step at a time, and check that the result satisfies the original conditions.', 'Choose · simplify · check') }}
+  {{ page('Advanced Mathematics', 'Progress & Reflection', 'REFLECTION', 'There was no separate project for this subject, so I am focusing on explaining the material we learned. I will add my test-score screenshot here when I am ready to share it.', 'Test-score evidence can be added later') }}
 </div>
 {% endblock %}
