@@ -18,7 +18,7 @@
           <a class="pixel-button ggb-link" href="{{ url_for('static', filename='files/MATHAHH.ggb') }}" download>Download GeoGebra file <span>↓</span></a>
           {% else %}
           <span class="visual-label">{{ label }}</span>
-          <strong>{{ visual }}</strong>
+          {% if not label.startswith('MATERIAL') %}<strong>{{ visual }}</strong>{% endif %}
           {% endif %}
         </div>
         <div class="presentation-copy"><p>{{ text }}</p></div>
@@ -37,7 +37,7 @@
         <div class="project-meta"><span class="project-subject">{{ subject }}</span><span class="project-date">{{ label }}</span></div>
       </header>
       <div class="project-content presentation-content">
-        <div class="presentation-visual"><span class="visual-label">{{ label }}</span><strong>{{ visual }}</strong></div>
+        <div class="presentation-visual"><span class="visual-label">{{ label }}</span></div>
         <div class="presentation-copy"><ul class="presentation-points">{% for point in points %}<li>{{ point }}</li>{% endfor %}</ul></div>
       </div>
     </article>
@@ -86,13 +86,21 @@
     'Quadratic leaves: y = 0.2 + 5t − 2.2t² and similar curves create controlled arcs and organic edges.',
     'Geometric details: points, polygons, segments, and smaller circles complete the repeated pattern.'
   ], 'Circles · curves · coordinates') }}
-  {{ page('Mathematics', 'Reflection: Mathematics and Meaning', 'REFLECTION', 'The batik motif connected mathematical understanding with cultural design. Reflection and rotation were not only procedures; they helped me become a more thoughtful communicator and thinker by explaining how precise rules can create balance, rhythm, and identity in a visual pattern. I also practiced being open-minded by seeing mathematics as a creative language.', 'Thinker · communicator · open-minded') }}
+  {{ page('Mathematics', 'Reflection: Mathematics and Meaning', 'REFLECTION', 'The batik motif connected mathematical understanding with cultural design. Reflection and rotation made me think about how order can become beauty, and how a pattern can hold both structure and cultural meaning. I began to see mathematics as more than calculation: it can be a philosophical way of asking how balance, identity, and harmony are created.', 'Mathematics as philosophy') }}
 
   {{ page('Physics', 'Circular Motion Video', 'PROJECT', 'My group made a video explaining circular motion: the movement of an object along a circular path around a fixed centre or axis.', 'Project overview') }}
-  {{ page('Physics', 'What Circular Motion Means', 'MATERIAL 01', 'In circular motion, the object’s position changes continuously while its distance from the centre stays constant. Velocity is tangent to the path, so its direction changes even when the speed is constant. The inward change in velocity is caused by centripetal acceleration.', 'Path · centre · changing direction') }}
-  {{ page('Physics', 'Key Quantities and Equations', 'MATERIAL 02', 'The important quantities are radius r, period T, frequency f, speed v, and angular speed ω. The relationships are f = 1/T, v = 2πr/T, ω = 2π/T, and centripetal acceleration aᶜ = v²/r = ω²r. The inward force is Fᶜ = mv²/r.', 'r · T · f · v · ω · aᶜ · Fᶜ') }}
+  {{ page('Physics', 'What Circular Motion Means', 'MATERIAL 01', 'Circular motion is the movement of an object along a circular path around a fixed centre. The radius is the distance from the object to that centre and stays constant on a circular path. The object may keep the same speed, but its velocity still changes because velocity includes direction. That continuous change in direction creates centripetal acceleration, which always points inward toward the centre. Examples include a turning wheel, a stone on a string, a car going around a bend, and a satellite orbiting Earth.', 'Circular path and inward acceleration') }}
+  {{ points_page('Physics', 'Key Quantities and Equations', 'MATERIAL 02', [
+    'Radius: r is the distance from the object to the centre of the circular path.',
+    'Period and frequency: T is the time for one revolution and f = 1/T is the number of revolutions per second.',
+    'Linear speed: v = 2πr/T. Angular speed: ω = 2π/T.',
+    'Centripetal acceleration: aᶜ = v²/r = ω²r, directed toward the centre.',
+    'Centripetal force: Fᶜ = mv²/r = mω²r.',
+    'For a vertical circle at the bottom: mg + N = mv²/r, where weight and normal force point toward the centre.',
+    'At minimum speed at the top, the normal force is zero: mg = mv²/r, so v minimum = √(gr).'
+  ], 'Key formulas') }}
   {{ page('Physics', 'Examples and Video Explanation', 'MATERIAL 03', 'Examples include a stone tied to a string, a turning bicycle wheel, and a satellite orbit. Our video can show the radius, tangent velocity, and inward force with diagrams, then connect each equation to the example being demonstrated.', 'Diagram · demonstration · narration') }}
-  {{ page('Physics', 'Reflection: Explaining Motion', 'REFLECTION', 'Making the circular-motion video connected knowledge with communication. I had to be principled about using correct explanations, a thinker when linking equations to real examples, and a communicator when making the idea understandable for an audience. It reminded me that learning becomes stronger when I can explain it clearly to someone else.', 'Communicator · principled · thinker') }}
+  {{ page('Physics', 'Reflection: Explaining Motion', 'REFLECTION', 'Circular motion made me reflect on how an unseen force can shape a visible path. The object appears to move freely, yet its direction is continually guided toward the centre. This connects physics with a wider philosophical idea: what we observe is often the result of relationships and forces that cannot be seen directly. Understanding the model taught me to value evidence, precision, and humility when explaining reality.', 'Forces, evidence, and reality') }}
 
   {{ page('Advanced Mathematics', 'Trigonometry Materials', 'TOPIC', 'There was no separate project for Advanced Mathematics. This term I studied trigonometric identities, expressions, and equations, and how they help us rewrite, simplify, and solve relationships involving angles.', 'Topic overview') }}
   {{ page('Advanced Mathematics', 'Trigonometric Identities', 'MATERIAL 01', 'An identity is true for every angle where both sides are defined. The core identity is sin²θ + cos²θ = 1. Other foundational identities include tanθ = sinθ/cosθ, secθ = 1/cosθ, and 1 + tan²θ = sec²θ. These identities let me replace one form with an equivalent form.', 'Equivalent relationships') }}
@@ -102,7 +110,7 @@
   {{ page('Advanced Mathematics', 'Half-Angle Formulas', 'MATERIAL 05', 'Half-angle formulas rewrite a function of θ/2 using a function of θ. They are sin(θ/2) = ±√((1 − cosθ)/2), cos(θ/2) = ±√((1 + cosθ)/2), and tan(θ/2) = ±√((1 − cosθ)/(1 + cosθ)). Tangent can also be written as tan(θ/2) = (1 − cosθ)/sinθ = sinθ/(1 + cosθ). The sign depends on the quadrant of θ/2.', 'sin · cos · tan of θ/2') }}
   {{ page('Advanced Mathematics', 'Expressions and Equations', 'MATERIAL 06', 'An expression has no equals sign, so I simplify it without changing its value by factoring, combining terms, and applying identities. An equation asks for angle values: I isolate the function, use a reference angle and quadrant signs, include the full interval, and substitute solutions back to check them.', 'Simplify · solve · verify') }}
   {{ page('Advanced Mathematics', 'Worked Identity Strategy', 'MATERIAL 07', 'For an expression such as sin(90° + θ) + cos(2θ), I first apply the allied-angle identity to get cosθ. I then choose the useful double-angle form for cos(2θ), simplify step by step, and keep the original domain in mind. Writing one identity per line makes errors easier to find.', 'One identity per line') }}
-  {{ page('Advanced Mathematics', 'Reflection: Looking for Connections', 'REFLECTION', 'Trigonometry encouraged me to look for connections instead of memorising isolated formulas. Allied, compound, double-angle, and half-angle identities show that different expressions can describe the same relationship. This developed my skills as an inquirer and thinker, while checking domains and solutions required me to be principled, careful, and honest about my reasoning.', 'Inquirer · thinker · principled') }}
+  {{ page('Advanced Mathematics', 'Reflection: Looking for Connections', 'REFLECTION', 'Trigonometry encouraged me to look for connections instead of memorising isolated formulas. Allied, compound, double-angle, and half-angle identities show that different expressions can describe the same relationship. This made me reflect on how knowledge can be transformed without losing its truth, and why careful reasoning matters when we decide whether an answer is valid.', 'Questioning certainty') }}
 
   {{ reflection_page('Self Reflection: Goals and Progress', 'REFLECTION 01', 'grade11-reflection-goals.jpeg', 'Handwritten self-reflection sheet about personal goals, progress, and next steps', 'My goals this term were to live more authentically in the moment, develop deeper self-awareness, and regain consistency and discipline. I wrote that I kept going through exhaustion and difficulty, began expressing my thoughts in a journal, joined competitions, and studied regularly. Next, I want to stay calm, manage stress better, keep challenging myself, and create more work while exploring new topics.') }}
   {{ reflection_page('Self Reflection: Values and Next Steps', 'REFLECTION 02', 'grade11-reflection-values.jpeg', 'Handwritten self-reflection sheet about honesty, independence, growth, and time', 'This term I tried to be intellectually honest and independently autonomous. I showed this through ongoing contemplation, philosophical discussion, accepting difficult truths, finding information for myself, examining my choices, and reflecting on both my inner and outer self. Next term, I want to grow beyond my current limits and use my time more deliberately by taking on challenges, staying curious, setting clear priorities, focusing on my interests, and reflecting honestly and deeply.') }}
