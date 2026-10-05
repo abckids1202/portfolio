@@ -15,6 +15,16 @@ about_me = {
 def home():
     return render_template('index.html', about=about_me)
 
+@app.route('/portfolio')
+def portfolio():
+    return render_template('portfolio.html')
+
+@app.route('/dear/<int:grade>/term/<int:term>')
+def dear(grade, term):
+    if grade not in (10, 11, 12) or term not in (1, 2, 3, 4):
+        return render_template('404.html'), 404
+    return render_template('dear.html', grade=grade, term=term)
+
 @app.route('/grade/10/term/1')
 def grade10_term1():
     return render_template('grade10_term1.html')

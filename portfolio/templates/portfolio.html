@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Portfolio - Arsene Matthew{% endblock %}
+{% block content %}
+<section class="page-hero" aria-labelledby="portfolio-title">
+  <div class="eyebrow">SMA ACHIEVEMENTS / PROJECT ARCHIVE</div>
+  <h1 id="portfolio-title">My Portfolio</h1>
+  <p>Selected achievements, school projects, and evidence of the skills I am building at SMA.</p>
+</section>
+<section class="portfolio-sections" aria-label="Achievements and projects">
+  <article class="content-card portfolio-section"><div class="panel-topline"><span>ACHIEVEMENTS</span><span>01</span></div><h2>Progress worth remembering</h2><p>This space is for academic milestones, competition participation, certificates, presentations, and personal growth. Add each achievement with the date, what I did, and what I learned.</p><div class="achievement-grid"><div class="achievement-card"><span class="achievement-icon">✦</span><h3>Academic growth</h3><p>Subjects, assessments, and skills that show how my learning has developed.</p></div><div class="achievement-card"><span class="achievement-icon">◇</span><h3>Competitions</h3><p>Challenges and competitions where I practiced preparation, focus, and resilience.</p></div><div class="achievement-card"><span class="achievement-icon">▤</span><h3>Personal development</h3><p>Reflection, consistency, and independent learning beyond the classroom.</p></div></div></article>
+  <article class="content-card portfolio-section"><div class="panel-topline"><span>PROJECTS</span><span>02</span></div><h2>Work I have made</h2><p>Explore projects by grade and term, including the process, materials, and reflections behind each piece of work.</p><div class="portfolio-project-links">{% for grade in [10, 11, 12] %}<div><strong>Grade {{ grade }}</strong>{% for term in [1, 2, 3, 4] %}<a href="/grade/{{ grade }}/term/{{ term }}">Term {{ term }} <span>↗</span></a>{% endfor %}</div>{% endfor %}</div></article>
+</section>
+{% endblock %}

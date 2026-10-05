@@ -25,11 +25,20 @@
         <div class="dropdown-menu">{% for term in [1, 2, 3, 4] %}<a href="/grade/{{ grade }}/term/{{ term }}" {% if request.path == '/grade/' ~ grade ~ '/term/' ~ term %}aria-current="page"{% endif %}><span>0{{ term }}</span> Term {{ term }}</a>{% endfor %}</div>
       </details>
       {% endfor %}
+      <details class="nav-item dropdown dear-nav">
+        <summary class="nav-link {{ 'selected' if request.path.startswith('/dear/') }}">DEAR <span class="chevron">⌄</span></summary>
+        <div class="dropdown-menu dear-menu">
+          {% for grade in [10, 11, 12] %}
+          <div class="dear-grade"><strong>Grade {{ grade }}</strong>{% for term in [1, 2, 3, 4] %}<a href="/dear/{{ grade }}/term/{{ term }}" {% if request.path == '/dear/' ~ grade ~ '/term/' ~ term %}aria-current="page"{% endif %}>Term {{ term }}</a>{% endfor %}</div>
+          {% endfor %}
+        </div>
+      </details>
+      <a href="/portfolio" class="nav-link {{ 'selected' if request.path == '/portfolio' }}">Portfolio</a>
     </nav>
     <button class="effects-toggle" aria-pressed="true" title="Toggle ambient motion"><span class="effects-light"></span> FX <span class="effects-state">ON</span></button>
   </header>
   <main class="content" id="main">
-    {% if request.path != '/' %}<div class="journal-breadcrumb"><a href="/#journey">← Back to world</a><span>QUEST JOURNAL / GRADE {{ request.path.split('/')[2] }} / TERM {{ request.path.split('/')[4] }}</span></div>{% endif %}
+    {% if request.path != '/' %}<div class="journal-breadcrumb"><a href="/#journey">← Back to world</a><span>{% if request.path.startswith('/grade/') %}QUEST JOURNAL / GRADE {{ request.path.split('/')[2] }} / TERM {{ request.path.split('/')[4] }}{% elif request.path.startswith('/dear/') %}DEAR / GRADE {{ request.path.split('/')[2] }} / TERM {{ request.path.split('/')[4] }}{% else %}MATTHEW'S PORTFOLIO{% endif %}</span></div>{% endif %}
     {% block content %}{% endblock %}
   </main>
   <footer class="site-footer"><a href="/">MATTHEW'S WORLD</a><span>Projects. Reflections. Progress.</span><a href="mailto:matthew.arsene.en@gmail.com">Say hello ↗</a></footer>
