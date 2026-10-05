@@ -13,11 +13,7 @@
       <div class="project-content presentation-content">
         <div class="presentation-visual{% if image or video_file %} presentation-image{% endif %}">
           {% if video_file %}
-          <video class="presentation-video" controls preload="metadata" playsinline aria-label="{{ title }} video">
-            <source src="{{ url_for('static', filename='files/' ~ video_file) }}" type="video/mp4">
-            Your browser does not support embedded video. <a href="{{ url_for('static', filename='files/' ~ video_file) }}">Download the video</a>.
-          </video>
-          <span class="image-caption">Play, pause, seek, adjust volume, mute, or use fullscreen.</span>
+          <div class="video-link-card"><span class="visual-label">PHYSICS VIDEO</span><strong>Watch the circular motion explanation</strong><a class="pixel-button primary" href="https://github.com/abckids1202/portfolio/raw/main/portfolio/static/files/physics-project-final.mp4" target="_blank" rel="noopener">Open video ↗</a><span class="image-caption">The video opens in a separate tab for reliable playback.</span></div>
           {% elif image %}
           <img src="{{ url_for('static', filename='images/' ~ image_file) }}" alt="{{ title }} visual">
           <span class="image-caption">{{ title }} visual</span>
@@ -80,9 +76,9 @@
         <div class="project-meta"><span class="project-subject">DEAR · {{ book.author }}</span><span class="project-date">{{ book.month }}</span></div>
       </header>
       <div class="project-content presentation-content">
-        <div class="presentation-visual presentation-image">
-          <img src="{{ url_for('static', filename='images/' ~ book.notes_image) }}" alt="Handwritten reading notes for {{ book.title }}">
-          <span class="image-caption">Handwritten reading notes · {{ book.month }}</span>
+        <div class="presentation-visual presentation-image dear-slide-images">
+          <div><img src="{{ url_for('static', filename='images/' ~ book.image) }}" alt="Cover of {{ book.title }}"><span class="image-caption">Book cover</span></div>
+          <div><img src="{{ url_for('static', filename='images/' ~ book.notes_image) }}" alt="Handwritten reading notes for {{ book.title }}"><span class="image-caption">Reading notes</span></div>
         </div>
         <div class="presentation-copy dear-slide-copy">
           <div><div class="dear-slide-field"><strong>Synopsis</strong><p>{{ book.synopsis }}</p></div><div class="dear-slide-field"><strong>Climax / central turning point</strong><p>{{ book.climax }}</p></div><div class="dear-slide-field"><strong>Review</strong><p>{{ book.review }}</p></div><div class="dear-slide-field"><strong>Insights</strong><p>{{ book.insights }}</p></div></div>
