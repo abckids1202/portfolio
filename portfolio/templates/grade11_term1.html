@@ -2,7 +2,7 @@
 
 {% block title %}Grade 11 - Term 1{% endblock %}
 
-{% macro page(subject, title, label, text, visual, image=false, image_file='grade11-batik-motif.png') %}
+{% macro page(subject, title, label, text, visual, image=false, image_file='grade11-batik-motif.png', video_file='') %}
 <div class="slide">
   <div class="slide-content">
     <article class="project-card subject-slide">
@@ -11,8 +11,14 @@
         <div class="project-meta"><span class="project-subject">{{ subject }}</span><span class="project-date">{{ label }}</span></div>
       </header>
       <div class="project-content presentation-content">
-        <div class="presentation-visual{% if image %} presentation-image{% endif %}">
-          {% if image %}
+        <div class="presentation-visual{% if image or video_file %} presentation-image{% endif %}">
+          {% if video_file %}
+          <video class="presentation-video" controls preload="metadata" playsinline aria-label="{{ title }} video">
+            <source src="{{ url_for('static', filename='files/' ~ video_file) }}" type="video/mp4">
+            Your browser does not support embedded video. <a href="{{ url_for('static', filename='files/' ~ video_file) }}">Download the video</a>.
+          </video>
+          <span class="image-caption">Play, pause, seek, adjust volume, mute, or use fullscreen.</span>
+          {% elif image %}
           <img src="{{ url_for('static', filename='images/' ~ image_file) }}" alt="{{ title }} visual">
           <span class="image-caption">{{ title }} visual</span>
           {% if image_file == 'grade11-batik-motif.png' %}<a class="pixel-button ggb-link" href="{{ url_for('static', filename='files/MATHAHH.ggb') }}" download>Download GeoGebra file <span>↓</span></a>{% endif %}
@@ -88,7 +94,7 @@
   ], 'Circles · curves · coordinates', 'grade11-ggb-construction.png') }}
   {{ page('Mathematics', 'Reflection: Mathematics and Meaning', 'REFLECTION', 'The batik motif connected mathematical understanding with cultural design. Reflection and rotation made me think about how order can become beauty, and how a pattern can hold both structure and cultural meaning. I began to see mathematics as more than calculation: it can be a philosophical way of asking how balance, identity, and harmony are created.', 'Mathematics as philosophy', true, 'grade11-math-material03.png') }}
 
-  {{ page('Physics', 'Circular Motion Video', 'PROJECT', 'My group made a video explaining circular motion: the movement of an object along a circular path around a fixed centre or axis.', 'Project overview') }}
+  {{ page('Physics', 'Circular Motion Video', 'PROJECT', 'My group made a video explaining circular motion: the movement of an object along a circular path around a fixed centre or axis.', 'Project overview', false, 'grade11-batik-motif.png', 'physics-project-final.mp4') }}
   {{ page('Physics', 'What Circular Motion Means', 'MATERIAL 01', 'Circular motion is the movement of an object along a circular path around a fixed centre. The diagram shows the radius r from the centre to the object, the tangential velocity v along the path, and the inward acceleration a toward the centre. The angle θ describes the object’s position, while angular speed ω describes how quickly that angle changes. Even if the speed stays constant, velocity changes because direction changes continuously. That is why centripetal acceleration always points inward.', 'Circular motion diagram', true, 'grade11-physics-material01.png') }}
   {{ points_page('Physics', 'Key Quantities and Equations', 'MATERIAL 02', [
     'Radius: r is the distance from the object to the centre of the circular path.',

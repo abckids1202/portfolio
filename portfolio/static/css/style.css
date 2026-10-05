@@ -23,6 +23,7 @@
 .presentation-visual img{display:block;width:100%;height:auto;max-width:100%;max-height:350px;object-fit:contain;background:#101712;border:1px solid #728264}
 .presentation-image{padding:10px;gap:8px}
 .presentation-image img{max-height:350px}
+.presentation-video{display:block;width:100%;max-height:350px;background:#08110c;border:1px solid #728264}
 .presentation-visual .visual-label{font:20px var(--pixel);letter-spacing:2px;color:var(--lime)}
 .presentation-visual strong{max-width:100%;color:var(--text);font:26px/1.35 var(--pixel)}
 .presentation-copy{display:flex;align-items:center;min-width:0;min-height:250px;padding:clamp(26px,4vw,54px);background:#202d24;border-left:3px solid var(--lime)}
