@@ -2,7 +2,7 @@
 
 {% block title %}Grade 11 - Term 1{% endblock %}
 
-{% macro page(subject, title, label, text, visual, image=false) %}
+{% macro page(subject, title, label, text, visual, image=false, image_file='grade11-batik-motif.png') %}
 <div class="slide">
   <div class="slide-content">
     <article class="project-card subject-slide">
@@ -13,9 +13,9 @@
       <div class="project-content presentation-content">
         <div class="presentation-visual{% if image %} presentation-image{% endif %}">
           {% if image %}
-          <img src="{{ url_for('static', filename='images/grade11-batik-motif.png') }}" alt="Symmetrical batik motif in green, gold, and rust, created with geometric shapes and repeated transformations">
-          <span class="image-caption">My GeoGebra batik motif</span>
-          <a class="pixel-button ggb-link" href="{{ url_for('static', filename='files/MATHAHH.ggb') }}" download>Download GeoGebra file <span>↓</span></a>
+          <img src="{{ url_for('static', filename='images/' ~ image_file) }}" alt="{{ title }} visual">
+          <span class="image-caption">{{ title }} visual</span>
+          {% if image_file == 'grade11-batik-motif.png' %}<a class="pixel-button ggb-link" href="{{ url_for('static', filename='files/MATHAHH.ggb') }}" download>Download GeoGebra file <span>↓</span></a>{% endif %}
           {% else %}
           <span class="visual-label">{{ label }}</span>
           {% if not label.startswith('MATERIAL') %}<strong>{{ visual }}</strong>{% endif %}
@@ -28,7 +28,7 @@
 </div>
 {% endmacro %}
 
-{% macro points_page(subject, title, label, points, visual) %}
+{% macro points_page(subject, title, label, points, visual, image_file='') %}
 <div class="slide">
   <div class="slide-content">
     <article class="project-card subject-slide">
@@ -37,7 +37,7 @@
         <div class="project-meta"><span class="project-subject">{{ subject }}</span><span class="project-date">{{ label }}</span></div>
       </header>
       <div class="project-content presentation-content">
-        <div class="presentation-visual"><span class="visual-label">{{ label }}</span></div>
+        <div class="presentation-visual{% if image_file %} presentation-image{% endif %}">{% if image_file %}<img src="{{ url_for('static', filename='images/' ~ image_file) }}" alt="{{ title }} visual">{% else %}<span class="visual-label">{{ label }}</span>{% endif %}</div>
         <div class="presentation-copy"><ul class="presentation-points">{% for point in points %}<li>{{ point }}</li>{% endfor %}</ul></div>
       </div>
     </article>
@@ -77,19 +77,20 @@
     </div>
   </div>
 
-  {{ page('Mathematics', 'Batik Motif in GeoGebra', 'PROJECT', 'I created a batik-inspired motif in GeoGebra. The final design is built from repeated geometric shapes arranged around a centre.', 'Project overview', true) }}
-  {{ page('Mathematics', 'Transformations Used', 'MATERIAL 01', 'The main transformations are reflection and rotation. A reflection flips a point across a line, while a rotation turns a point around a centre by a chosen angle. Repeating these transformations creates the motif’s four-way symmetry.', 'Reflection · rotation') }}
+  {{ page('Mathematics', 'Batik Motif in GeoGebra', 'PROJECT', 'I created a batik-inspired motif in GeoGebra. The final design is built from repeated geometric shapes arranged around a centre.', 'Project overview', true, 'grade11-batik-motif.png') }}
+  {{ page('Mathematics', 'Transformations Used', 'MATERIAL 01', 'The diagram shows a triangle and its image after a transformation. I used a line as a mirror boundary to compare the original points A, B, C with their transformed points A′, B′, C′. This helped me see how a transformation changes position while preserving relationships such as lengths and angles.', 'Transformation diagram', true, 'grade11-math-material01.png') }}
   {{ points_page('Mathematics', 'Functions and Coordinates', 'MATERIAL 02', [
     'Circles: x² + y² = 1, 2.25, 4, 6.25, and 9 create the concentric foundation of the motif.',
     'Axes: y = 0 and x = 0 provide the horizontal and vertical symmetry lines.',
     'Parametric petals: x = 5 + 4cos(t)cos(45°) − 1.4sin(t)sin(45°), with its matching y-expression, creates a rotated petal curve.',
     'Quadratic leaves: y = 0.2 + 5t − 2.2t² and similar curves create controlled arcs and organic edges.',
     'Geometric details: points, polygons, segments, and smaller circles complete the repeated pattern.'
-  ], 'Circles · curves · coordinates') }}
+  ], 'Circles · curves · coordinates', 'grade11-ggb-construction.png') }}
+  {{ page('Mathematics', 'Functions in the Motif', 'MATERIAL 03', 'The construction image shows how functions can be selected and transformed into geometric components. I used curves and coordinate relationships to create a repeatable unit, then combined it with symmetry so the same mathematical rule could appear in several positions around the motif.', 'Function-generated curves', true, 'grade11-math-material03.png') }}
   {{ page('Mathematics', 'Reflection: Mathematics and Meaning', 'REFLECTION', 'The batik motif connected mathematical understanding with cultural design. Reflection and rotation made me think about how order can become beauty, and how a pattern can hold both structure and cultural meaning. I began to see mathematics as more than calculation: it can be a philosophical way of asking how balance, identity, and harmony are created.', 'Mathematics as philosophy') }}
 
   {{ page('Physics', 'Circular Motion Video', 'PROJECT', 'My group made a video explaining circular motion: the movement of an object along a circular path around a fixed centre or axis.', 'Project overview') }}
-  {{ page('Physics', 'What Circular Motion Means', 'MATERIAL 01', 'Circular motion is the movement of an object along a circular path around a fixed centre. The radius is the distance from the object to that centre and stays constant on a circular path. The object may keep the same speed, but its velocity still changes because velocity includes direction. That continuous change in direction creates centripetal acceleration, which always points inward toward the centre. Examples include a turning wheel, a stone on a string, a car going around a bend, and a satellite orbiting Earth.', 'Circular path and inward acceleration') }}
+  {{ page('Physics', 'What Circular Motion Means', 'MATERIAL 01', 'Circular motion is the movement of an object along a circular path around a fixed centre. The diagram shows the radius r from the centre to the object, the tangential velocity v along the path, and the inward acceleration a toward the centre. The angle θ describes the object’s position, while angular speed ω describes how quickly that angle changes. Even if the speed stays constant, velocity changes because direction changes continuously. That is why centripetal acceleration always points inward.', 'Circular motion diagram', true, 'grade11-physics-material01.png') }}
   {{ points_page('Physics', 'Key Quantities and Equations', 'MATERIAL 02', [
     'Radius: r is the distance from the object to the centre of the circular path.',
     'Period and frequency: T is the time for one revolution and f = 1/T is the number of revolutions per second.',
@@ -98,11 +99,11 @@
     'Centripetal force: Fᶜ = mv²/r = mω²r.',
     'For a vertical circle at the bottom: mg + N = mv²/r, where weight and normal force point toward the centre.',
     'At minimum speed at the top, the normal force is zero: mg = mv²/r, so v minimum = √(gr).'
-  ], 'Key formulas') }}
-  {{ page('Physics', 'Examples and Video Explanation', 'MATERIAL 03', 'Examples include a stone tied to a string, a turning bicycle wheel, and a satellite orbit. Our video can show the radius, tangent velocity, and inward force with diagrams, then connect each equation to the example being demonstrated.', 'Diagram · demonstration · narration') }}
+  ], 'Key formulas', 'grade11-physics-material02.png') }}
+  {{ page('Physics', 'Vertical Circular Motion: Bucket and Water', 'MATERIAL 03', 'Our example is a bucket of water swung in a vertical circle. At the top, the bucket and water need enough inward centripetal acceleration to follow the circular path instead of falling away. At the minimum speed, the normal force is zero, so gravity alone provides the centripetal force: mg = mv²/r, which gives v minimum = √(gr). At the bottom, the tension or hand force must provide the inward force while also supporting the weight, so the required force is larger.', 'Bucket-and-water example', true, 'grade11-physics-material03.png') }}
   {{ page('Physics', 'Reflection: Explaining Motion', 'REFLECTION', 'Circular motion made me reflect on how an unseen force can shape a visible path. The object appears to move freely, yet its direction is continually guided toward the centre. This connects physics with a wider philosophical idea: what we observe is often the result of relationships and forces that cannot be seen directly. Understanding the model taught me to value evidence, precision, and humility when explaining reality.', 'Forces, evidence, and reality') }}
 
-  {{ page('Advanced Mathematics', 'Trigonometry Materials', 'TOPIC', 'There was no separate project for Advanced Mathematics. This term I studied trigonometric identities, expressions, and equations, and how they help us rewrite, simplify, and solve relationships involving angles.', 'Topic overview') }}
+  {{ page('Advanced Mathematics', 'Trigonometry Materials', 'TOPIC', 'There was no separate project for Advanced Mathematics. This term I studied trigonometric identities, expressions, and equations, and how they help us rewrite, simplify, and solve relationships involving angles.', 'Topic overview', true, 'grade11-advanced-math-topic.png') }}
   {{ page('Advanced Mathematics', 'Trigonometric Identities', 'MATERIAL 01', 'An identity is true for every angle where both sides are defined. The core identity is sin²θ + cos²θ = 1. Other foundational identities include tanθ = sinθ/cosθ, secθ = 1/cosθ, and 1 + tan²θ = sec²θ. These identities let me replace one form with an equivalent form.', 'Equivalent relationships') }}
   {{ page('Advanced Mathematics', 'Allied Angles', 'MATERIAL 02', 'Allied-angle identities connect angles to 90°, 180°, 270°, and 360°. For example, sin(90° + θ) = cosθ, cos(90° + θ) = −sinθ, sin(90° − θ) = cosθ, and cos(90° − θ) = sinθ. The sign changes depend on the quadrant, so I identify the reference angle before simplifying.', 'sin(90° + θ) = cosθ') }}
   {{ page('Advanced Mathematics', 'Compound Angles', 'MATERIAL 03', 'Compound-angle formulas expand the sine, cosine, and tangent of a sum or difference. sin(α ± β) = sinα cosβ ± cosα sinβ. For cosine, cos(α ± β) = cosα cosβ ∓ sinα sinβ. The paired signs must be used consistently from left to right.', 'sin(α ± β) · cos(α ± β)') }}
