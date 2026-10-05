@@ -81,8 +81,8 @@
       </header>
       <div class="project-content presentation-content">
         <div class="presentation-visual presentation-image">
-          <img src="{{ url_for('static', filename='images/' ~ book.image) }}" alt="Cover of {{ book.title }}">
-          <span class="image-caption">Reading cover · {{ book.month }}</span>
+          <img src="{{ url_for('static', filename='images/' ~ book.notes_image) }}" alt="Handwritten reading notes for {{ book.title }}">
+          <span class="image-caption">Handwritten reading notes · {{ book.month }}</span>
         </div>
         <div class="presentation-copy dear-slide-copy">
           <div><div class="dear-slide-field"><strong>Synopsis</strong><p>{{ book.synopsis }}</p></div><div class="dear-slide-field"><strong>Climax / central turning point</strong><p>{{ book.climax }}</p></div><div class="dear-slide-field"><strong>Review</strong><p>{{ book.review }}</p></div><div class="dear-slide-field"><strong>Insights</strong><p>{{ book.insights }}</p></div></div>
