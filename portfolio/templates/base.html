@@ -35,7 +35,7 @@
       </details>
       <a href="/portfolio" class="nav-link {{ 'selected' if request.path == '/portfolio' }}">Portfolio</a>
     </nav>
-    <button class="effects-toggle" aria-pressed="true" title="Toggle ambient motion"><span class="effects-light"></span> FX <span class="effects-state">ON</span></button>
+    <button class="effects-toggle" aria-pressed="false" title="Ambient motion is off for faster loading"><span class="effects-light"></span> FX <span class="effects-state">OFF</span></button>
   </header>
   <main class="content" id="main">
     {% if request.path != '/' %}<div class="journal-breadcrumb"><a href="/#journey">← Back to world</a><span>{% if request.path.startswith('/grade/') %}QUEST JOURNAL / GRADE {{ request.path.split('/')[2] }} / TERM {{ request.path.split('/')[4] }}{% elif request.path.startswith('/dear/') %}DEAR / GRADE {{ request.path.split('/')[2] }} / TERM {{ request.path.split('/')[4] }}{% else %}MATTHEW'S PORTFOLIO{% endif %}</span></div>{% endif %}

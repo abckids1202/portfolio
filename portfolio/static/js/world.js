@@ -1,8 +1,8 @@
 (() => {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const fxButton = document.querySelector('.effects-toggle');
-  let enabled = !reduced.matches;
-  try { enabled = localStorage.getItem('portfolio-effects') === 'off' ? false : enabled; } catch (_) {}
+  // Motion is opt-in so the page stays responsive on low-power devices.
+  let enabled = false;
   function setEffects(value) {
     enabled = value;
     document.body.classList.toggle('effects-off', !value);
@@ -12,16 +12,23 @@
   setEffects(enabled);
   fxButton.addEventListener('click', () => {
     setEffects(!enabled);
-    try { localStorage.setItem('portfolio-effects', enabled ? 'on' : 'off'); } catch (_) {}
+    if (enabled) createParticles();
+    try { localStorage.setItem('portfolio-effects', 'off'); } catch (_) {}
   });
   reduced.addEventListener('change', event => { if (event.matches) setEffects(false); });
   const particles = document.querySelector('.particles');
-  for (let i = 0; i < 22; i++) {
-    const particle = document.createElement('span');
-    particle.className = 'particle';
-    particle.style.cssText = `--left:${(i * 37) % 100}%;--duration:${12 + i % 9}s;--delay:-${i * 1.7}s`;
-    particles.append(particle);
+  let particlesCreated = false;
+  function createParticles() {
+    if (particlesCreated || !particles) return;
+    particlesCreated = true;
+    for (let i = 0; i < 22; i++) {
+      const particle = document.createElement('span');
+      particle.className = 'particle';
+      particle.style.cssText = `--left:${(i * 37) % 100}%;--duration:${12 + i % 9}s;--delay:-${i * 1.7}s`;
+      particles.append(particle);
+    }
   }
+  if (enabled) createParticles();
   const menuButton = document.querySelector('.mobile-menu-btn');
   const menu = document.querySelector('.nav-menu');
   menuButton.addEventListener('click', () => {
@@ -44,17 +51,22 @@
   const hero = document.querySelector('.hero');
   if (hero) {
     const biomes = [
-      { key: 'overworld', name: 'Overworld', description: 'Cherry grove', image: '/static/images/cherry-world.png' },
-      { key: 'nether', name: 'Nether', description: 'Crimson citadel', image: '/static/images/biome-nether.png' },
-      { key: 'end', name: 'The End', description: 'Astral islands', image: '/static/images/biome-end.png' },
-      { key: 'ice', name: 'Frozen peaks', description: 'Aurora lake', image: '/static/images/biome-ice.png' },
-      { key: 'lush', name: 'Lush cave', description: 'Crystal falls', image: '/static/images/biome-lush.png' }
+      { key: 'overworld', name: 'Overworld', description: 'Cherry grove', image: '/static/images/cherry-world.webp' },
+      { key: 'nether', name: 'Nether', description: 'Crimson citadel', image: '/static/images/biome-nether.webp' },
+      { key: 'end', name: 'The End', description: 'Astral islands', image: '/static/images/biome-end.webp' },
+      { key: 'ice', name: 'Frozen peaks', description: 'Aurora lake', image: '/static/images/biome-ice.webp' },
+      { key: 'lush', name: 'Lush cave', description: 'Crystal falls', image: '/static/images/biome-lush.webp' }
     ];
     const backdrop = document.querySelector('.world-backdrop');
     const worldLabel = document.querySelector('.world-label');
     const sceneBiome = document.querySelector('.scene-biome');
     let biomeIndex = 0;
     let pointerStart = null;
+    function preloadBiome(index) {
+      const image = new Image();
+      image.decoding = 'async';
+      image.src = biomes[(index + biomes.length) % biomes.length].image;
+    }
     function showBiome(next) {
       biomeIndex = (next + biomes.length) % biomes.length;
       const biome = biomes[biomeIndex];
@@ -64,6 +76,7 @@
       sceneBiome.textContent = biome.description;
       backdrop.classList.remove('biome-changing');
       requestAnimationFrame(() => backdrop.classList.add('biome-changing'));
+      preloadBiome(biomeIndex + 1);
     }
     document.addEventListener('keydown', event => {
       if (event.key === 'ArrowLeft') { event.preventDefault(); showBiome(biomeIndex - 1); }
