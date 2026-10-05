@@ -15,6 +15,7 @@
           {% if image %}
           <img src="{{ url_for('static', filename='images/grade11-batik-motif.png') }}" alt="Symmetrical batik motif in green, gold, and rust, created with geometric shapes and repeated transformations">
           <span class="image-caption">My GeoGebra batik motif</span>
+          <a class="pixel-button ggb-link" href="{{ url_for('static', filename='files/MATHAHH.ggb') }}" download>Download GeoGebra file <span>↓</span></a>
           {% else %}
           <span class="visual-label">{{ label }}</span>
           <strong>{{ visual }}</strong>
@@ -61,7 +62,7 @@
 
   {{ page('Mathematics', 'Batik Motif in GeoGebra', 'PROJECT', 'I created a batik-inspired motif in GeoGebra. The final design is built from repeated geometric shapes arranged around a centre.', 'Project overview', true) }}
   {{ page('Mathematics', 'Transformations Used', 'MATERIAL 01', 'The main transformations are reflection and rotation. A reflection flips a point across a line, while a rotation turns a point around a centre by a chosen angle. Repeating these transformations creates the motif’s four-way symmetry.', 'Reflection · rotation') }}
-  {{ page('Mathematics', 'Functions and Coordinates', 'MATERIAL 02', 'Functions describe the curves and boundaries of the motif. Coordinates locate every point on the grid, so changing an input or parameter changes the shape in a controlled way. This lets the design stay precise instead of being drawn by eye.', 'Functions · points · parameters') }}
+  {{ page('Mathematics', 'Functions and Coordinates', 'MATERIAL 02', 'The GeoGebra file combines several kinds of constructions. The base uses the circle equations x² + y² = 1, 2.25, 4, 6.25, and 9, together with the lines y = 0 and x = 0. Parametric curves such as x = 5 + 4cos(t)cos(45°) − 1.4sin(t)sin(45°) and its matching y-expression create rotated petal shapes. Other curves use quadratic functions like y = 0.2 + 5t − 2.2t² for curved leaves, while polygons, points, and smaller circles create the geometric details.', 'Circles · curves · coordinates') }}
   {{ page('Mathematics', 'Reflection: Mathematics and Meaning', 'REFLECTION', 'The batik motif connected mathematical understanding with cultural design. Reflection and rotation were not only procedures; they helped me become a more thoughtful communicator and thinker by explaining how precise rules can create balance, rhythm, and identity in a visual pattern. I also practiced being open-minded by seeing mathematics as a creative language.', 'Thinker · communicator · open-minded') }}
 
   {{ page('Physics', 'Circular Motion Video', 'PROJECT', 'My group made a video explaining circular motion: the movement of an object along a circular path around a fixed centre or axis.', 'Project overview') }}
