@@ -68,7 +68,7 @@ def grade10_term4():
 
 @app.route('/grade/11/term/1')
 def grade11_term1():
-    return render_template('grade11_term1.html')
+    return render_template('grade11_term1.html', dear_books=dear_reading.get((11, 1), []))
 
 @app.route('/grade/11/term/2')
 def grade11_term2():

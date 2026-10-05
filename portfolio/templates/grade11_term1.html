@@ -71,6 +71,28 @@
 </div>
 {% endmacro %}
 
+{% macro dear_page(book) %}
+<div class="slide">
+  <div class="slide-content">
+    <article class="project-card subject-slide">
+      <header class="project-header">
+        <h2>{{ book.title }}</h2>
+        <div class="project-meta"><span class="project-subject">DEAR · {{ book.author }}</span><span class="project-date">{{ book.month }}</span></div>
+      </header>
+      <div class="project-content presentation-content">
+        <div class="presentation-visual presentation-image">
+          <img src="{{ url_for('static', filename='images/' ~ book.image) }}" alt="Cover of {{ book.title }}">
+          <span class="image-caption">Reading cover · {{ book.month }}</span>
+        </div>
+        <div class="presentation-copy dear-slide-copy">
+          <div><div class="dear-slide-field"><strong>Synopsis</strong><p>{{ book.synopsis }}</p></div><div class="dear-slide-field"><strong>Climax / central turning point</strong><p>{{ book.climax }}</p></div><div class="dear-slide-field"><strong>Review</strong><p>{{ book.review }}</p></div><div class="dear-slide-field"><strong>Insights</strong><p>{{ book.insights }}</p></div></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+{% endmacro %}
+
 {% block content %}
 <div class="slideshow-container">
   <div class="slide active">
@@ -118,8 +140,8 @@
   {{ page('Advanced Mathematics', 'Worked Identity Strategy', 'MATERIAL 07', 'For an expression such as sin(90° + θ) + cos(2θ), I first apply the allied-angle identity to get cosθ. I then choose the useful double-angle form for cos(2θ), simplify step by step, and keep the original domain in mind. Writing one identity per line makes errors easier to find.', 'One identity per line', true, 'grade11-trig-worked.svg') }}
   {{ page('Advanced Mathematics', 'Reflection: Looking for Connections', 'REFLECTION', 'Trigonometry encouraged me to look for connections instead of memorising isolated formulas. Allied, compound, double-angle, and half-angle identities show that different expressions can describe the same relationship. This made me reflect on how knowledge can be transformed without losing its truth, and why careful reasoning matters when we decide whether an answer is valid.', 'Questioning certainty', true, 'grade11-trig-reflection.svg') }}
 
+  {% for book in dear_books %}{{ dear_page(book) }}{% endfor %}
   {{ reflection_page('Self Reflection: Goals and Progress', 'REFLECTION 01', 'grade11-reflection-goals.jpeg', 'Handwritten self-reflection sheet about personal goals, progress, and next steps', 'My goals this term were to live more authentically in the moment, develop deeper self-awareness, and regain consistency and discipline. I wrote that I kept going through exhaustion and difficulty, began expressing my thoughts in a journal, joined competitions, and studied regularly. Next, I want to stay calm, manage stress better, keep challenging myself, and create more work while exploring new topics.') }}
   {{ reflection_page('Self Reflection: Values and Next Steps', 'REFLECTION 02', 'grade11-reflection-values.jpeg', 'Handwritten self-reflection sheet about honesty, independence, growth, and time', 'This term I tried to be intellectually honest and independently autonomous. I showed this through ongoing contemplation, philosophical discussion, accepting difficult truths, finding information for myself, examining my choices, and reflecting on both my inner and outer self. Next term, I want to grow beyond my current limits and use my time more deliberately by taking on challenges, staying curious, setting clear priorities, focusing on my interests, and reflecting honestly and deeply.') }}
-  {{ page('Personal Reflection', 'Reflection Summary', 'FINAL PAGE', 'These reflections show that my learning this term was both academic and personal. I am working toward greater discipline, honest self-understanding, and the courage to keep learning through difficulty. My next steps are to protect my focus, manage stress, use time intentionally, and continue creating and exploring.', 'Growth · honesty · discipline', true, 'grade11-term-reflection.svg') }}
 </div>
 {% endblock %}
