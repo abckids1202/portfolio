@@ -13,7 +13,7 @@
       <div class="project-content presentation-content">
         <div class="presentation-visual{% if image or video_file %} presentation-image{% endif %}">
           {% if video_file %}
-          <div class="video-link-card"><span class="visual-label">PHYSICS VIDEO</span><strong>Watch the circular motion explanation</strong><a class="pixel-button primary" href="https://github.com/abckids1202/portfolio/raw/main/portfolio/static/files/physics-project-final.mp4" target="_blank" rel="noopener">Open video ↗</a><span class="image-caption">The video opens in a separate tab for reliable playback.</span></div>
+          <div class="video-link-card"><span class="visual-label">PHYSICS VIDEO</span><strong>Watch the circular motion explanation</strong><a class="pixel-button primary" href="https://drive.google.com/file/d/1G1vS4rWTpNWlh24hGRwatrunguPadhd4/view?usp=sharing" target="_blank" rel="noopener">Open video ↗</a><span class="image-caption">The video opens in Google Drive for playback.</span></div>
           {% elif image %}
           <img src="{{ url_for('static', filename='images/' ~ image_file) }}" alt="{{ title }} visual">
           <span class="image-caption">{{ title }} visual</span>
